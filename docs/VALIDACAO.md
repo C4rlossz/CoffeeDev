@@ -18,7 +18,7 @@ Data: 21/10/2026. Esta é uma revisão técnica assistida de demonstração loca
 | Recursos do APK | Dez imagens WebP, 15 documentos legais PT/EN/ES e avisos de fontes/licenças incluídos |
 | Integridade do APK e ZIP | Verificada |
 | Inventário Android | 63 artefatos de runtime demo com versões e hashes |
-| Varredura textual de segredos | Nenhum achado nos padrões verificados; chave debug e conta demo públicas documentadas |
+| Varredura textual de segredos | Nenhum achado nos padrões verificados; conta demo pública documentada e chave privada excluída do repositório |
 | Npm produção opcional | Nenhum alerta reportado com --omit=dev |
 | Npm desenvolvimento/testes | 7 alertas residuais (3 altos e 4 moderados); nenhum crítico |
 
@@ -55,4 +55,4 @@ O APK permanece compilado com compileSdk/targetSdk 35; executar em Android 16 n�
 
 ## Assinatura na publicação do código
 
-A assinatura compatível com a versão 1.1 refere-se ao APK já validado e disponibilizado em downloads. O repositório público não contém a chave privada. Para novos builds, o Gradle usa a chave debug local padrão; esses APKs podem ter outra assinatura. A preparação para publicação alterou somente essa configuração de assinatura e a documentação; os resultados acima pertencem ao APK 1.2.0 distribuído.
+A assinatura compatível com a versão 1.1 refere-se ao APK já validado e disponibilizado em downloads. O repositório público não contém a chave privada. Para novos builds, o Gradle usa a chave debug local padrão; esses APKs podem ter outra assinatura. A preparação para publicação alterou a configuração de assinatura, a documentação e a instalação dos pacotes do SDK no GitHub Actions; os resultados acima pertencem ao APK 1.2.0 distribuído.
