@@ -1,0 +1,28 @@
+.gradle/
+**/build/
+local.properties
+.idea/
+*.iml
+app/google-services.json
+*service-account*.json
+.env
+backend/node_modules/
+firebase-debug.log
+firestore-debug.log
+.firebase/
+*.jks
+*.keystore
+
+
+
+# Private data and exported requests must never be committed.
+*.db
+*.db-wal
+*.db-shm
+CoffeeDev-meus-dados*.json
+*serviceAccount*.json
+.env.*
+
+# Material de entrega fora do repositório público.
+LEIA-PRIMEIRO.txt
+LEIA-PRIMEIRO*.txt

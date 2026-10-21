@@ -1,0 +1,362 @@
+{
+  "scope": "CoffeeDev local portfolio source",
+  "version": "1.2.0",
+  "checks": [
+    {
+      "name": "all translation entries have three languages",
+      "passed": true
+    },
+    {
+      "name": "no duplicate translation keys",
+      "passed": true
+    },
+    {
+      "name": "public legal entry before authentication",
+      "passed": true
+    },
+    {
+      "name": "local manifest has no Internet permission",
+      "passed": true
+    },
+    {
+      "name": "cloud explicitly declares Internet permission",
+      "passed": true
+    },
+    {
+      "name": "backup disabled",
+      "passed": true
+    },
+    {
+      "name": "pt/privacy bundled",
+      "passed": true
+    },
+    {
+      "name": "pt/terms bundled",
+      "passed": true
+    },
+    {
+      "name": "pt/cookies bundled",
+      "passed": true
+    },
+    {
+      "name": "pt/accessibility bundled",
+      "passed": true
+    },
+    {
+      "name": "pt/credits bundled",
+      "passed": true
+    },
+    {
+      "name": "en/privacy bundled",
+      "passed": true
+    },
+    {
+      "name": "en/terms bundled",
+      "passed": true
+    },
+    {
+      "name": "en/cookies bundled",
+      "passed": true
+    },
+    {
+      "name": "en/accessibility bundled",
+      "passed": true
+    },
+    {
+      "name": "en/credits bundled",
+      "passed": true
+    },
+    {
+      "name": "es/privacy bundled",
+      "passed": true
+    },
+    {
+      "name": "es/terms bundled",
+      "passed": true
+    },
+    {
+      "name": "es/cookies bundled",
+      "passed": true
+    },
+    {
+      "name": "es/accessibility bundled",
+      "passed": true
+    },
+    {
+      "name": "es/credits bundled",
+      "passed": true
+    },
+    {
+      "name": "demo credentials absent from login UI",
+      "passed": true
+    },
+    {
+      "name": "registration has explicit terms action",
+      "passed": true
+    },
+    {
+      "name": "form never auto-submits data",
+      "passed": true
+    },
+    {
+      "name": "declared color roles meet text/outline thresholds",
+      "passed": true
+    },
+    {
+      "name": "ten local food images",
+      "passed": true
+    },
+    {
+      "name": "no Firebase client configuration included",
+      "passed": true
+    }
+  ],
+  "contrast": [
+    {
+      "theme": "Light",
+      "foreground": "onPrimary",
+      "background": "Primary",
+      "ratio": 8.905385047696774,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onSecondary",
+      "background": "Secondary",
+      "ratio": 6.473720454566325,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onTertiary",
+      "background": "Tertiary",
+      "ratio": 8.905385047696774,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onPrimaryContainer",
+      "background": "PrimaryContainer",
+      "ratio": 11.87685895638867,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onSecondaryContainer",
+      "background": "SecondaryContainer",
+      "ratio": 11.87685895638867,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onTertiaryContainer",
+      "background": "TertiaryContainer",
+      "ratio": 11.87685895638867,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onBackground",
+      "background": "Background",
+      "ratio": 14.73444164378079,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onSurface",
+      "background": "Surface",
+      "ratio": 16.297191803328737,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onSurfaceVariant",
+      "background": "SurfaceVariant",
+      "ratio": 5.47069436356431,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onError",
+      "background": "Error",
+      "ratio": 6.536488984854358,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "onErrorContainer",
+      "background": "ErrorContainer",
+      "ratio": 13.25965913654373,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "outline",
+      "background": "surface",
+      "ratio": 5.680062492936665,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "outline",
+      "background": "background",
+      "ratio": 5.1353969656360645,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "outline",
+      "background": "primaryContainer",
+      "ratio": 4.139443279933851,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "theme": "Light",
+      "foreground": "outline",
+      "background": "surfaceVariant",
+      "ratio": 4.514253896420473,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onPrimary",
+      "background": "Primary",
+      "ratio": 8.197525295272785,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onSecondary",
+      "background": "Secondary",
+      "ratio": 9.462848322258642,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onTertiary",
+      "background": "Tertiary",
+      "ratio": 9.462848322258642,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onPrimaryContainer",
+      "background": "PrimaryContainer",
+      "ratio": 10.51072782677037,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onSecondaryContainer",
+      "background": "SecondaryContainer",
+      "ratio": 10.51072782677037,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onTertiaryContainer",
+      "background": "TertiaryContainer",
+      "ratio": 10.51072782677037,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onBackground",
+      "background": "Background",
+      "ratio": 16.34355126099217,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onSurface",
+      "background": "Surface",
+      "ratio": 14.44325679786179,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onSurfaceVariant",
+      "background": "SurfaceVariant",
+      "ratio": 7.807435928200883,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onError",
+      "background": "Error",
+      "ratio": 7.716637440809738,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "onErrorContainer",
+      "background": "ErrorContainer",
+      "ratio": 7.239033063855644,
+      "minimum": 4.5,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "outline",
+      "background": "surface",
+      "ratio": 5.155403618368987,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "outline",
+      "background": "background",
+      "ratio": 5.833698347064751,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "outline",
+      "background": "primaryContainer",
+      "ratio": 3.75171922982395,
+      "minimum": 3,
+      "passed": true
+    },
+    {
+      "theme": "Dark",
+      "foreground": "outline",
+      "background": "surfaceVariant",
+      "ratio": 4.197139581051726,
+      "minimum": 3,
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Static source checks do not certify legal compliance.",
+    "Contrast roles are checked, not every rendered pixel/state.",
+    "No manual TalkBack/device certification.",
+    "No worldwide trademark/reverse-image clearance."
+  ]
+}

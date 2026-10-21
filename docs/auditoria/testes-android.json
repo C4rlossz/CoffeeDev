@@ -1,0 +1,21 @@
+{
+  "Demo": {
+    "tests": 19,
+    "failures": 0,
+    "errors": 0
+  },
+  "Cloud": {
+    "tests": 7,
+    "failures": 0,
+    "errors": 0
+  },
+  "lint_demoDebug": {
+    "errors": 0,
+    "warnings": 17
+  },
+  "lint_cloudDebug": {
+    "errors": 0,
+    "warnings": 11
+  },
+  "signature_matches_1_1": true
+}

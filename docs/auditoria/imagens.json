@@ -1,0 +1,82 @@
+[
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_brownie.webp",
+    "sha256": "20947e6e729c944765ebbd9f19c6c63d9233aa5f1adb9081592b620e497da5b5",
+    "bytes": 473274,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_cappuccino.webp",
+    "sha256": "687a748aa6bbf01cf89440db8f61a49e9beb68eee4de5c27d4ab349225d4dbb7",
+    "bytes": 310474,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_coldbrew.webp",
+    "sha256": "98c3c730a6d549c51b71b780367d8f8d00b5dbe225294360765cf09ebcac4b2d",
+    "bytes": 454858,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_cookie.webp",
+    "sha256": "295b434a973b43efc8e350c29e8932e001675ca21dca65d9ca40f9e72b0c9400",
+    "bytes": 487226,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_croissant.webp",
+    "sha256": "a6dcb6bca8518977774e3e7064d0016e3d71626a13886835f3bf17f148df1169",
+    "bytes": 448060,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_espresso.webp",
+    "sha256": "4136e030f268ebac28235ae27ca12457ab95fe145dcdf6db0117dc25c260f3c6",
+    "bytes": 326154,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_latte.webp",
+    "sha256": "3a62cf67403bf459166993a3da011da6d78a19272ef1f37ad760c2b2c966b0ac",
+    "bytes": 307290,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_mocha.webp",
+    "sha256": "d072a019f5ec57773ecf08bc82e6e4708032c3e8652eaebfe1009c5b32a2dc0e",
+    "bytes": 337694,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_paochapa.webp",
+    "sha256": "b29fd28f3ced00927fd6cf0ea4d9f1d19d3ccb8bb3b85746d5ffc75d7515004b",
+    "bytes": 469708,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  },
+  {
+    "path": "app/src/main/res/drawable-nodpi/photo_paoqueijo.webp",
+    "sha256": "94e8b51bb92808d733bc9ef580298b3bcc3b95d8233a30f1efe389f971d53f5c",
+    "bytes": 397250,
+    "origin": "OpenAI image generation; concept food image",
+    "visible_logos_people_watermarks": false,
+    "review": "Visual review of all ten images on 2026-10-21; not an exhaustive similarity search"
+  }
+]

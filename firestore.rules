@@ -1,0 +1,117 @@
+rules_version = '2';
+// Standard Firestore schema, v1.1:
+// system/owner: uid (server-owned identity of the unique administrator).
+// access/{uid}: uid/name/email/status; identity immutable; status pending/active/blocked.
+// catalog/menu: products map with exactly ten fixed SKUs, each priceCents:int 100..100000 and available:bool.
+// orders/{uuid}: uid, quantities:map SKU->int 0..10, totalCents:int, status, createdAt:timestamp, note:string <=240.
+// Order identity, amounts, contents and creation time are immutable after creation.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signed() { return request.auth != null; }
+    function active() { return signed() && get(/databases/$(database)/documents/access/$(request.auth.uid)).data.status == 'active'; }
+    function owner() { return active() && get(/databases/$(database)/documents/system/owner).data.uid == request.auth.uid; }
+    function ids() { return ['cappuccino','espresso','latte','coldbrew','mocha','cookie','croissant','paochapa','paoqueijo','brownie']; }
+    function validMember(d) {
+      return d.keys().hasAll(['uid','name','email','status']) && d.keys().hasOnly(['uid','name','email','status'])
+        && d.uid is string && d.uid.size() > 0 && d.uid.size() <= 128
+        && d.name is string && d.name.size() >= 2 && d.name.size() <= 80
+        && d.email is string && d.email.size() >= 3 && d.email.size() <= 254
+        && d.status in ['pending','active','blocked'];
+    }
+    function validProduct(d) {
+      return d is map && d.keys().hasAll(['priceCents','available']) && d.keys().hasOnly(['priceCents','available'])
+        && d.priceCents is int && d.priceCents >= 100 && d.priceCents <= 100000 && d.available is bool;
+    }
+    function validCatalog(d) {
+      let p = d.products;
+      return d.keys().hasAll(['products']) && d.keys().hasOnly(['products']) && p is map
+        && p.keys().hasAll(ids()) && p.keys().hasOnly(ids())
+        && validProduct(p.cappuccino)
+          && validProduct(p.espresso)
+          && validProduct(p.latte)
+          && validProduct(p.coldbrew)
+          && validProduct(p.mocha)
+          && validProduct(p.cookie)
+          && validProduct(p.croissant)
+          && validProduct(p.paochapa)
+          && validProduct(p.paoqueijo)
+          && validProduct(p.brownie);
+    }
+    function qty(q,id) { return q.get(id,0); }
+    function validQty(q,id) { return qty(q,id) is int && qty(q,id) >= 0 && qty(q,id) <= 10; }
+    function sellable(q,p,id) { return qty(q,id) == 0 || p[id].available == true; }
+    function line(q,p,id) { return qty(q,id) * p[id].priceCents; }
+    function validOrderData(d) {
+      let q = d.quantities;
+      return d.keys().hasAll(['uid','quantities','totalCents','status','createdAt','note'])
+        && d.keys().hasOnly(['uid','quantities','totalCents','status','createdAt','note'])
+        && d.uid is string && d.uid.size() > 0 && d.uid.size() <= 128
+        && d.createdAt is timestamp && d.note is string && d.note.size() <= 240
+        && d.status in ['received','preparing','ready','completed']
+        && q is map && q.size() > 0 && q.size() <= 10 && q.keys().hasOnly(ids())
+        && validQty(q,'cappuccino')
+          && validQty(q,'espresso')
+          && validQty(q,'latte')
+          && validQty(q,'coldbrew')
+          && validQty(q,'mocha')
+          && validQty(q,'cookie')
+          && validQty(q,'croissant')
+          && validQty(q,'paochapa')
+          && validQty(q,'paoqueijo')
+          && validQty(q,'brownie')
+        && d.totalCents is int && d.totalCents > 0 && d.totalCents <= 10000000;
+    }
+    function validOrderCreation(d) {
+      // One catalog read keeps ten-item orders below the Security Rules document-access limit.
+      let p = get(/databases/$(database)/documents/catalog/menu).data.products;
+      let q = d.quantities;
+      return validOrderData(d) && d.uid == request.auth.uid && d.status == 'received'
+        && d.createdAt == request.time
+        && sellable(q,p,'cappuccino')
+          && sellable(q,p,'espresso')
+          && sellable(q,p,'latte')
+          && sellable(q,p,'coldbrew')
+          && sellable(q,p,'mocha')
+          && sellable(q,p,'cookie')
+          && sellable(q,p,'croissant')
+          && sellable(q,p,'paochapa')
+          && sellable(q,p,'paoqueijo')
+          && sellable(q,p,'brownie')
+        && d.totalCents == line(q,p,'cappuccino') + line(q,p,'espresso') + line(q,p,'latte') + line(q,p,'coldbrew') + line(q,p,'mocha') + line(q,p,'cookie') + line(q,p,'croissant') + line(q,p,'paochapa') + line(q,p,'paoqueijo') + line(q,p,'brownie');
+    }
+    function validTransition() {
+      return (resource.data.status == 'received' && request.resource.data.status == 'preparing')
+        || (resource.data.status == 'preparing' && request.resource.data.status == 'ready')
+        || (resource.data.status == 'ready' && request.resource.data.status == 'completed');
+    }
+    match /system/{id} {
+      allow get: if signed() && id == 'owner';
+      allow list, write: if false;
+    }
+    match /access/{uid} {
+      allow get: if signed() && (request.auth.uid == uid || owner());
+      allow list: if owner();
+      allow create: if signed() && request.auth.uid == uid && validMember(request.resource.data)
+        && request.resource.data.uid == uid && request.resource.data.email == request.auth.token.email
+        && request.resource.data.status == 'pending';
+      allow update: if owner() && uid != request.auth.uid && validMember(request.resource.data)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status in ['active','blocked'];
+      allow delete: if false;
+    }
+    match /catalog/{id} {
+      allow read: if active() && id == 'menu';
+      allow update: if owner() && id == 'menu' && validCatalog(request.resource.data);
+      allow create, delete: if false;
+    }
+    match /orders/{id} {
+      allow get: if active() && (!exists(/databases/$(database)/documents/orders/$(id)) || resource.data.uid == request.auth.uid || owner());
+      allow list: if active() && (resource.data.uid == request.auth.uid || owner());
+      allow create: if active() && validOrderCreation(request.resource.data);
+      allow update: if owner() && validOrderData(request.resource.data)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']) && validTransition();
+      allow delete: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

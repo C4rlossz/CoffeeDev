@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-21",
+  "app_version": "1.2.0",
+  "project_author": "Carlos Eduardo",
+  "scope": "Technical assisted review of local Android portfolio demo",
+  "not_certifications": [
+    "LGPD",
+    "WCAG",
+    "legal opinion",
+    "independent audit",
+    "trademark clearance"
+  ],
+  "contact_choice": "LinkedIn selected by user",
+  "cloud_production_approved": false,
+  "manual_device_accessibility_tested": false
+}

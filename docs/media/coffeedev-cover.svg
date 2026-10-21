@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+<title id="title">CoffeeDev — café, código e boas ideias</title><desc id="desc">Projeto Android autoral de Carlos Eduardo. Kotlin, Jetpack Compose, SQLite e Firebase.</desc>
+<rect width="1200" height="360" rx="28" fill="#F7F3EC"/>
+<circle cx="1050" cy="180" r="240" fill="#EED9BE"/>
+<circle cx="1035" cy="180" r="132" fill="#6B3F21"/>
+<g fill="none" stroke="#F7F3EC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+<path d="M968 151h105v54a33 33 0 0 1-33 33h-39a33 33 0 0 1-33-33z"/><path d="M1073 162h16a27 27 0 0 1 0 54h-16M955 252h132M1010 105l-16 14 16 14M1045 105l16 14-16 14"/>
+</g>
+<g font-family="Arial, sans-serif" fill="#2B1D14">
+<text x="64" y="70" font-size="14" letter-spacing="4" fill="#6B3F21">ANDROID · PROJETO DE PORTFÓLIO</text>
+<text x="60" y="158" font-size="78" font-weight="700" letter-spacing="-3">CoffeeDev</text>
+<text x="64" y="206" font-size="25">Café, código e boas ideias.</text>
+<text x="64" y="255" font-size="17" fill="#68574A">Kotlin  /  Jetpack Compose  /  SQLite  /  Firebase</text>
+<text x="64" y="309" font-size="15" fill="#6B3F21">PROJETO AUTORAL DE CARLOS EDUARDO</text>
+</g></svg>

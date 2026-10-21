@@ -1,0 +1,14 @@
+{
+  "scope": "textual project sources excluding dependency/build directories",
+  "findings": [],
+  "exceptions": [
+    "Public demo login documented in installation guide"
+  ],
+  "limitations": [
+    "Pattern scan is not a guarantee that no secret exists."
+  ],
+  "publication_controls": [
+    "No signing keystore is included in the public repository",
+    "No production or service-account credentials are committed"
+  ]
+}

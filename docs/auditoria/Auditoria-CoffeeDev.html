@@ -1,0 +1,214 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Revisão técnica CoffeeDev 1.2</title><style>*{box-sizing:border-box}body{margin:0;background:#f7f3ec;color:#2b1d14;font:17px/1.65 system-ui,sans-serif}main,header,nav{max-width:1120px;margin:auto;padding:28px}header{padding-top:56px}h1{font-size:44px;line-height:1.15;margin:12px 0}h2{font-size:30px;line-height:1.25}h3{font-size:24px;line-height:1.35}h4{font-size:20px}a{color:#6b3f21;text-underline-offset:3px}a:focus-visible{outline:3px solid #6b3f21;outline-offset:4px}nav{display:flex;gap:16px;flex-wrap:wrap}nav a{padding:8px 0}section{background:#fff;padding:28px;border-radius:20px;margin-bottom:24px;scroll-margin-top:20px}.label{letter-spacing:.12em;font-size:13px;font-weight:700}.notice{background:#eed9be;padding:18px;border-radius:12px}.stats{display:flex;flex-wrap:wrap;gap:20px;margin-top:24px}.stats div{min-width:160px}.stats strong{display:block;font-size:30px}.table-scroll{overflow:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;vertical-align:top;padding:12px;border:1px solid #776354}th{background:#eed9be}code{background:#f7f3ec;border-radius:3px;padding:2px 4px;overflow-wrap:anywhere}p,td,li{overflow-wrap:anywhere}li{margin-bottom:8px}@media(max-width:650px){header,nav,main{padding:18px}h1{font-size:34px}section{padding:18px}}@media print{body{background:#fff;font-size:10pt}nav{display:none}header,main{padding:0}section{break-inside:auto;padding:12px 0;border-radius:0}table{font-size:8pt}.table-scroll{overflow:visible}a{color:inherit}}</style><header><p class="label">COFFEEDEV · REVISÃO TÉCNICA · 21/10/2026</p><h1>Privacidade, acessibilidade<br>e autoria do projeto</h1><p>Responsável: Carlos Eduardo · Versão 1.2.0 · Aplicativo Android de portfólio.</p><p class="notice">Demonstração local com dados fictícios. Esta revisão assistida não é certificação LGPD/WCAG, parecer jurídico ou garantia de ausência de erros. Os riscos e as verificações pendentes estão documentados abaixo.</p><div class="stats"><div><strong>19</strong>testes Android aprovados</div><div><strong>16</strong>testes de regras aprovados</div><div><strong>0</strong>erros Android Lint</div><div><strong>7</strong>alertas nas ferramentas de teste</div></div></header><nav aria-label="Índice"><a href="#relatorio">Relatório e riscos</a><a href="#validacao">Validação</a><a href="#acessibilidade">Acessibilidade</a><a href="#contraste">Contraste</a><a href="#imagens">Imagens e direitos</a><a href="#dependencias">Dependências</a><a href="#fontes">Fontes oficiais</a></nav><main><section aria-label="Nota de publicação"><h2>Publicação do código no GitHub</h2><p>Chaves privadas de assinatura não acompanham o repositório. O APK distribuído mantém a assinatura validada; novas compilações debug usam a chave local padrão do Android Gradle Plugin e podem exigir instalação separada. Os resultados abaixo pertencem à revisão do APK 1.2.0 distribuído.</p></section><section id="relatorio" aria-label="Relatório e riscos"><h2>Revisão técnica de privacidade, direitos e acessibilidade — CoffeeDev</h2>
+<p>Data: 21/10/2026 · Versão revisada: 1.2.0 · Responsável pelo projeto: Carlos Eduardo.</p>
+<h3>Resultado e escopo</h3>
+<p>Revisão técnica assistida do código-fonte e dos materiais da demonstração Android local, com correções implementadas e evidências reproduzíveis. Não é parecer de advogado, teste de invasão, registro de marca, certificação LGPD, laudo WCAG completo ou declaração de ausência de erros. Carlos Eduardo é o autor e responsável pelo projeto; este relatório não afirma que ele executou pessoalmente todas as verificações, nem que houve auditor independente.</p>
+<p>O pacote é preparado para apresentação como projeto educacional de portfólio, com limitações explícitas. Não autoriza uso operacional com dados reais. A variante cloud exige a revisão e os controles abaixo antes de operação; nenhuma instância real foi examinada ou publicada nesta revisão.</p>
+<h3>Matriz de achados</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tema</th><th scope="col">Situação encontrada</th><th scope="col">Medida aplicada</th><th scope="col">Estado residual</th></tr></thead><tbody>
+<tr><td>Política de privacidade</td><td>Ausente na interface</td><td>Texto específico ao fluxo local, acessível sem login e traduzido para PT/EN/ES</td><td>Revisão jurídica antes de uso real</td></tr>
+<tr><td>Termos</td><td>Ausentes</td><td>Demonstração fictícia, titularidade, limites sem renúncia de direitos obrigatórios; leitura antes de solicitar cadastro</td><td>Validade contratual depende do contexto efetivo</td></tr>
+<tr><td>Cookies</td><td>Sem inventário</td><td>Aviso explica ausência de cookies/rastreadores no código local; sem banner fictício</td><td>Reavaliar se adicionar web/SDKs</td></tr>
+<tr><td>Formulário LGPD</td><td>Não implementado</td><td>Rascunho de direitos, cópia explícita e contato privado; nenhuma transmissão automática</td><td>LinkedIn pode exigir conta e limitar contato</td></tr>
+<tr><td>Direitos locais</td><td>Sem exportação ou exclusão</td><td>JSON restrito ao próprio usuário; exclusão de visitante e pedidos/preferências; limpeza total da instalação pelo dono demo</td><td>Arquivos exportados não são apagados pelo app; exclusão é lógica</td></tr>
+<tr><td>Senhas locais</td><td>SHA-256 simples com salt</td><td>PBKDF2-HMAC-SHA256, 210 mil iterações, salt aleatório de 32 bytes; migração após login válido</td><td>Conta administrativa continua pública por ser demonstração</td></tr>
+<tr><td>Migração de dados</td><td>Cópia anterior permanecia em preferências</td><td>Limpeza da cópia antiga após transação SQLite; secure_delete habilitado</td><td>Não promete apagamento físico em flash</td></tr>
+<tr><td>Backup e transferência Android</td><td>Só allowBackup=false</td><td>Regras explícitas de exclusão por domínio para cloud-backup e device-transfer</td><td>Revalidar em aparelhos/OEMs; não controla cópias externas</td></tr>
+<tr><td>Acesso à rede local</td><td>Permissão de internet no manifesto comum</td><td>Internet restrita ao manifesto cloud</td><td>Links externos abrem no navegador/app escolhido pelo usuário</td></tr>
+<tr><td>Formulário de acessibilidade</td><td>Ausente</td><td>Tipo específico de relato, sem pedir diagnóstico, CPF ou dado de saúde</td><td>Envio manual e canal externo</td></tr>
+<tr><td>Contraste</td><td>Secundário claro sobre branco: 2,897:1; contorno sobre container: 2,992:1</td><td>Novas cores secundárias/contornos, papéis explícitos nos dois temas e testes de contraste</td><td>Não mede todos os pixels, elevações/overlays e estados de componentes</td></tr>
+<tr><td>Toque/semântica</td><td>Favorito com 40 dp, descrições genéricas</td><td>Favorito 48 dp, rótulos contextualizados por produto, busca rotulada, títulos e botões semânticos</td><td>TalkBack e Switch Access manuais pendentes</td></tr>
+<tr><td>Fonte ampliada</td><td>Grade sempre com duas colunas e alturas fixas em ações</td><td>Uma coluna com escala &gt;=1,3; nomes sem truncamento; altura mínima nos botões principais</td><td>Validar em aparelhos com fonte 200%, rotação e teclado</td></tr>
+<tr><td>Imagens</td><td>Origem descrita, mas sem inventário jurídico</td><td>Dez WebPs inventariados por SHA-256, inspeção visual, crédito de geração e limites de direitos</td><td>Sem busca reversa exaustiva ou liberação mundial de similaridade</td></tr>
+<tr><td>Copyright</td><td>Sem separação clara entre autoria própria e terceiros</td><td>COPYRIGHT.md e THIRD_PARTY_NOTICES.md, OFL e Apache no APK, inventário de dependências</td><td>Não se declara exclusividade sobre saídas de IA</td></tr>
+<tr><td>Identificação</td><td>Nome do autor já constava, sem contato na área pública</td><td>Carlos Eduardo, pessoa física; LinkedIn escolhido pelo autor; sem CNPJ/endereço inventado</td><td>Não é prova de identidade nem nomeação formal de encarregado</td></tr>
+<tr><td>Dependências administrativas</td><td>Auditoria inicial apontou 28 alertas (13 moderados, 14 altos e 1 crítico)</td><td>Atualização de pacotes e lockfile, nova varredura e testes</td><td>Restam 7 alertas (4 moderados, 3 altos) só nas ferramentas de desenvolvimento/teste; nenhum na árvore Node de produção; ver DEPENDENCIAS.md</td></tr>
+<tr><td>Banco cloud</td><td>Regras impedem exclusão direta e cliente mostra só até 100 pedidos</td><td>Mantido acesso restrito; direitos cloud sinalizados para atendimento administrativo, sem simular exclusão</td><td>Exige rotina administrativa paginada de acesso/correção/exclusão antes de dados reais</td></tr>
+<tr><td>GitHub</td><td>Pacote ainda não publicado nesta etapa</td><td>README de portfólio, avisos, segurança, ignore e evidências</td><td>Publicação é próxima etapa; nenhum selo “100% conforme”</td></tr>
+</tbody></table></div>
+<h3>LGPD e funcionamento real</h3>
+<p>Não se presume exclusão da LGPD porque o responsável é pessoa física ou porque o trabalho é de portfólio. A eventual hipótese de uso exclusivamente particular e não econômico deve ser examinada no contexto; divulgação e coleta por terceiros podem mudar o enquadramento. O projeto evita dados reais na demonstração e documenta o tratamento efetivo.</p>
+<p>A hipótese preliminar para funções estritamente solicitadas é a execução do serviço a pedido do usuário (art. 7º, V), sem usar um aceite genérico como autorização de marketing. A leitura dos termos não gera prova de consentimento para finalidades opcionais. Uso comercial, dados de menores, dados sensíveis e finalidades adicionais exigem análise própria, que não foi realizada como aprovação nesta entrega.</p>
+<p>O app não coleta CPF, endereço, telefone, localização, câmera, contatos, pagamentos ou dados de saúde por campos próprios. Campos livres podem receber dados indevidos; as políticas e instruções orientam não inseri-los. O risco não é eliminado por essa orientação.</p>
+<h3>Condições antes de usuários reais ou cloud</h3>
+<ol>
+<li>Definir e testar canal privado acessível que não dependa de conta em rede social; o LinkedIn foi escolhido para o portfólio, mas não é certificado como canal suficiente para todos os titulares.</li>
+<li>Validar bases legais, identificação/contato e eventual encarregado ou dispensa aplicável com assessoria jurídica. Não há nomeação fictícia ou declaração automática de pequeno porte.</li>
+<li>Definir retenção por categoria, descarte operacional e minimização. No demo não existe rotina de expiração; a retenção até exclusão está declarada.</li>
+<li>Implementar rotina administrativa autenticada para exportar TODOS os pedidos, corrigir cadastro, eliminar Auth + access + orders, controlar exceções justificadas e registrar atendimento. Não usar a consulta de 100 pedidos do cliente como exportação completa cloud.</li>
+<li>Confirmar região do Firestore, tratamento internacional do Auth e metadados, termos do Google e mecanismo jurídico de transferência internacional. O selo/certificação do fornecedor não certifica o CoffeeDev.</li>
+<li>Manter chaves privadas fora do repositório e usar assinatura de lançamento privada; restringir IAM, chaves de serviço, contas e ambientes. Testar restauração e evitar log de dados pessoais.</li>
+<li>Repetir análise de dependências, licença e regras, configurar controles de abuso apropriados e verificar as configurações reais. Esta revisão de arquivos não confirma IAM, região, cotas ou regras de uma conta online.</li>
+<li>Executar testes manuais de navegação/semântica/foco, fonte grande, teclado, TalkBack e Switch Access, documentando aparelho, versão e resultados reais.</li>
+<li>Submeter nome/marca e imagens a pesquisa especializada se houver exploração comercial ou exigência de exclusividade. Não foi feita pesquisa INPI nem declaração de disponibilidade da marca.</li>
+</ol>
+<h3>Atendimento e incidentes</h3>
+<p>Use GESTAO-LGPD.md para registrar pedidos, prazos e descarte sem expor dados em GitHub. Pedido preparado no formulário é rascunho, não protocolo recebido. Não há envio de e-mail ou serviço de tickets implícito.</p>
+<p>Se ocorrer incidente real: conter acesso, preservar evidências minimizadas, identificar dados/titulares/causas e avaliar risco ou dano relevante. Consultar a regulamentação ANPD vigente e comunicar quando aplicável, observando prazos e eventuais regras específicas de enquadramento. Não esperar a conclusão forense para avaliar obrigação de comunicação. Nenhum incidente real foi detectado ou declarado nesta revisão.</p>
+<h3>Evidências</h3>
+<ul>
+<li>checagens.json: verificações de fontes, traduções e pares de cores, com resultado por item.</li>
+<li>imagens.json e IMAGENS.md: arquivos, hashes, origem e limites da revisão visual.</li>
+<li>ACESSIBILIDADE.md: métricas e verificação manual pendente.</li>
+<li>INVENTARIO-DADOS.md: categorias, finalidade, armazenamento, acesso e descarte.</li>
+<li>DEPENDENCIAS.md e inventários: ferramentas, versões e alertas.</li>
+<li>../VALIDACAO.md: comandos e resultados de compilação/testes desta versão.</li>
+<li>FONTES.md: fontes oficiais consultadas.</li>
+</ul>
+<p>A evidência vale para os arquivos e versões identificados. Alterar funcionalidades, SDKs, dados, implantação ou documentos exige nova revisão. Não existem “risco zero”, “100% LGPD” ou “sem erros” atestados por este relatório.</p></section><section id="validacao" aria-label="Validação"><h2>Validação da entrega 1.2.0</h2>
+<p>Data: 21/10/2026. Esta é uma revisão técnica assistida de demonstração local; não é certificação LGPD/WCAG, auditoria independente ou parecer jurídico.</p>
+<h3>Resultados executados</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Verificação</th><th scope="col">Resultado</th></tr></thead><tbody>
+<tr><td>Build Android demo limpo</td><td>Sucesso, APK 1.2.0-demo / versionCode 3</td></tr>
+<tr><td>Testes Android demo</td><td>19 aprovados, zero falhas/erros</td></tr>
+<tr><td>Testes compartilhados cloud</td><td>7 aprovados, zero falhas/erros</td></tr>
+<tr><td>Android Lint demo</td><td>Zero erros; 17 avisos</td></tr>
+<tr><td>Android Lint cloud</td><td>Zero erros; 11 avisos</td></tr>
+<tr><td>Testes Node de domínio</td><td>7 aprovados</td></tr>
+<tr><td>Auth/Firestore emuladores oficiais</td><td>16 aprovados após atualização das dependências e override gRPC</td></tr>
+<tr><td>Assinatura do APK</td><td>Válida; mesma chave da versão 1.1</td></tr>
+<tr><td>Permissões APK local</td><td>Sem INTERNET; somente permissão interna AndroidX de receptor não exportado</td></tr>
+<tr><td>Recursos do APK</td><td>Dez imagens WebP, 15 documentos legais PT/EN/ES e avisos de fontes/licenças incluídos</td></tr>
+<tr><td>Integridade do APK e ZIP</td><td>Verificada</td></tr>
+<tr><td>Inventário Android</td><td>63 artefatos de runtime demo com versões e hashes</td></tr>
+<tr><td>Varredura textual de segredos</td><td>Nenhum achado nos padrões verificados; chave debug e conta demo públicas documentadas</td></tr>
+<tr><td>Npm produção opcional</td><td>Nenhum alerta reportado com --omit=dev</td></tr>
+<tr><td>Npm desenvolvimento/testes</td><td>7 alertas residuais (3 altos e 4 moderados); nenhum crítico</td></tr>
+</tbody></table></div>
+<p>Os 19 testes incluem catálogo e tradução, pares de contraste, carregamento de ícones adaptáveis, persistência/migração SQLite, pedidos e aprovação/suspensão de contas. Os cinco testes de privacidade cobrem exportação sem dados de outras contas e sem credenciais, exclusão de conta pendente/preferências, exclusão de pedidos com persistência após reabrir, migração de hash legado e limpeza da cópia antiga mesmo quando o banco já foi migrado pela versão 1.1.</p>
+<p>A correção do comando PRAGMA foi validada com execução de SQLite no ambiente Android de testes. O build final foi limpo para evitar estado incremental antigo. As tentativas iniciais encontraram limitações de preparação do ambiente (JRE sem compilador e download de dependência de teste sem proxy); o ambiente de build foi corrigido e os resultados acima são os da execução final concluída. As correções funcionais do código foram mantidas nos arquivos entregues.</p>
+<p>Os avisos Lint tratam de estilo/API, versões de dependências e recursos de ícone; o ícone monocromático existe na configuração v33. commit() foi mantido nos pontos de remoção de dados para aguardar a gravação, apesar da recomendação geral por apply(). Não se declara ausência de avisos ou de vulnerabilidades.</p>
+<h3>Cloud e limites</h3>
+<p>A variante cloud foi compilada/testada com configuração fictícia local, removida ao terminar; nenhum APK dessa configuração é entregue. Os emuladores usam apenas o projeto fictício demo-coffeedev. Nenhuma conta, regra ou banco real foi provisionado, auditado ou publicado.</p>
+<p>Não houve teste manual completo em aparelho, TalkBack ou Switch Access. Robolectric e testes estáticos não substituem esses testes, avaliação jurídica, análise exaustiva de dependências, pesquisa de marca ou busca reversa de imagens. Veja auditoria/RELATORIO.md e auditoria/ACESSIBILIDADE.md.</p>
+<h3>Reproduzir</h3>
+<ul>
+<li>scripts/audit-project.py verifica documentação incorporada, traduções, manifesto, cores e imagens (Python 3).</li>
+<li>Raiz Android: ./gradlew clean testDemoDebugUnitTest lintDemoDebug assembleDemoDebug.</li>
+<li>Windows: use .\gradlew.bat no lugar de ./gradlew.</li>
+<li>Com configuração própria Firebase: ./gradlew testCloudDebugUnitTest lintCloudDebug.</li>
+<li>Backend: npm ci, npm test e npm run test:rules, usando Node.js 22 LTS e JDK 21.</li>
+<li>Backend: npm audit --json e npm audit --omit=dev --json; a base de alertas muda com o tempo.</li>
+</ul>
+<p>O workflow GitHub Actions inclui verificações de fonte, build/testes demo e suíte de regras. Evidências estruturadas estão em auditoria/testes-android.json, checagens.json, imagens.json, segredos.json e nos inventários de dependências. Os testes podem precisar baixar ferramentas oficiais na primeira execução.</p></section><section id="acessibilidade" aria-label="Acessibilidade"><h2>Acessibilidade: escopo e evidências</h2>
+<p>WCAG 2.2 é usada como referência técnica, junto da documentação Android/Compose; não se afirma certificação WCAG nem auditoria independente. Uma análise de contraste de paleta não verifica todo o aplicativo.</p>
+<h3>Alterações aplicadas</h3>
+<ul>
+<li>Contraste secundário claro corrigido de 2,897:1 contra branco para um marrom escuro com texto branco adequado. Contorno claro corrigido onde tinha 2,992:1 contra o container.</li>
+<li>Cores explícitas para pares primary, secondary, tertiary, containers, surface, background, error e inverse, nos dois temas. Os limiares dos pares de texto são 4,5:1; contornos essenciais, 3:1.</li>
+<li>Os números completos, sem arredondamento na aprovação, estão em checagens.json. ContrastTest valida também texto primário/secundário sobre superfícies usadas pelo app.</li>
+<li>Favoritos com área de 48 dp e fundo opaco estável. Os demais botões próprios usam os padrões Material ou mínimos de altura de 48 dp.</li>
+<li>Descrições de adicionar/favoritar incluem o produto, em PT/EN/ES. Imagens de produtos têm descrição traduzida; ícones decorativos evitam anúncio duplicado.</li>
+<li>Busca com rótulo persistente; títulos de páginas com semântica de heading e links do perfil com papel de botão.</li>
+<li>Grade muda para uma coluna com escala de fonte &gt;=1,3. Nome do produto sem truncamento de uma linha. Botões principais e legais usam altura mínima em vez de altura rígida.</li>
+<li>Formulários possuem rótulos textuais, valores revisáveis e confirmação antes de exclusão. O rascunho de solicitação não é enviado sem ação manual.</li>
+</ul>
+<h3>Verificação manual necessária</h3>
+<p>Nenhum item abaixo é marcado como realizado sem evidência em aparelho:</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Cenário</th><th scope="col">Critério de aceitação</th><th scope="col">Estado</th></tr></thead><tbody>
+<tr><td>TalkBack em login, cadastro, cardápio e privacidade</td><td>Ordem útil, nomes/estados corretos, diálogo com retorno de foco</td><td>Pendente em aparelho</td></tr>
+<tr><td>Fonte Android 200% e tela estreita</td><td>Conteúdo acessível por rolagem sem sobreposição ou corte funcional</td><td>Pendente em aparelho</td></tr>
+<tr><td>Teclado e Switch Access</td><td>Todas as ações alcançáveis e acionáveis, foco visível</td><td>Pendente em aparelho</td></tr>
+<tr><td>Claro/escuro e estados reais</td><td>Contraste de todos os componentes, elevações, snackbars, erros e foco</td><td>Pendente em aparelho</td></tr>
+<tr><td>PT/EN/ES com leitor de tela</td><td>Pronúncia e anúncio de estados adequados</td><td>Pendente; depende também da voz/configuração do aparelho</td></tr>
+<tr><td>Exportar/excluir com tecnologia assistiva</td><td>Seletor compreensível, confirmação clara, resultado anunciado</td><td>Pendente em aparelho</td></tr>
+<tr><td>Avaliação por pessoas com deficiência</td><td>Barreiras identificadas e corrigidas</td><td>Não realizada</td></tr>
+</tbody></table></div>
+<p>O canal externo LinkedIn pode exigir conta e tem acessibilidade própria. Antes de operar com dados reais, oferecer alternativa privada acessível que não dependa de conta nessa plataforma.</p>
+<p>O formulário de acessibilidade usa o mesmo fluxo privado de solicitações: descrever barreira e resultado esperado, sem pedir diagnóstico/saúde. A interface não apresenta selo oficial ou conformidade integral.</p></section><section id="contraste" aria-label="Contraste"><h2>Pares de contraste verificados</h2>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tema</th><th scope="col">Primeiro plano</th><th scope="col">Fundo</th><th scope="col">Razão</th><th scope="col">Limite</th></tr></thead><tbody>
+<tr><td>Light</td><td>onPrimary</td><td>Primary</td><td>8.9054:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onSecondary</td><td>Secondary</td><td>6.4737:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onTertiary</td><td>Tertiary</td><td>8.9054:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onPrimaryContainer</td><td>PrimaryContainer</td><td>11.8769:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onSecondaryContainer</td><td>SecondaryContainer</td><td>11.8769:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onTertiaryContainer</td><td>TertiaryContainer</td><td>11.8769:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onBackground</td><td>Background</td><td>14.7344:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onSurface</td><td>Surface</td><td>16.2972:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onSurfaceVariant</td><td>SurfaceVariant</td><td>5.4707:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onError</td><td>Error</td><td>6.5365:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>onErrorContainer</td><td>ErrorContainer</td><td>13.2597:1</td><td>4.5:1</td></tr>
+<tr><td>Light</td><td>outline</td><td>surface</td><td>5.6801:1</td><td>3:1</td></tr>
+<tr><td>Light</td><td>outline</td><td>background</td><td>5.1354:1</td><td>3:1</td></tr>
+<tr><td>Light</td><td>outline</td><td>primaryContainer</td><td>4.1394:1</td><td>3:1</td></tr>
+<tr><td>Light</td><td>outline</td><td>surfaceVariant</td><td>4.5143:1</td><td>3:1</td></tr>
+<tr><td>Dark</td><td>onPrimary</td><td>Primary</td><td>8.1975:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onSecondary</td><td>Secondary</td><td>9.4628:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onTertiary</td><td>Tertiary</td><td>9.4628:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onPrimaryContainer</td><td>PrimaryContainer</td><td>10.5107:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onSecondaryContainer</td><td>SecondaryContainer</td><td>10.5107:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onTertiaryContainer</td><td>TertiaryContainer</td><td>10.5107:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onBackground</td><td>Background</td><td>16.3436:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onSurface</td><td>Surface</td><td>14.4433:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onSurfaceVariant</td><td>SurfaceVariant</td><td>7.8074:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onError</td><td>Error</td><td>7.7166:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>onErrorContainer</td><td>ErrorContainer</td><td>7.2390:1</td><td>4.5:1</td></tr>
+<tr><td>Dark</td><td>outline</td><td>surface</td><td>5.1554:1</td><td>3:1</td></tr>
+<tr><td>Dark</td><td>outline</td><td>background</td><td>5.8337:1</td><td>3:1</td></tr>
+<tr><td>Dark</td><td>outline</td><td>primaryContainer</td><td>3.7517:1</td><td>3:1</td></tr>
+<tr><td>Dark</td><td>outline</td><td>surfaceVariant</td><td>4.1971:1</td><td>3:1</td></tr>
+</tbody></table></div>
+<p>A aprovação usa o valor integral, sem arredondar para alcançar o limite. Estes pares são papéis declarados da paleta, não todos os estados renderizados. ContrastTest também verifica combinações usadas de texto/contorno. Veja ACESSIBILIDADE.md.</p></section><section id="imagens" aria-label="Imagens e direitos"><h2>Auditoria de imagens e direitos de uso</h2>
+<p>Revisão visual das dez imagens WebP em 21/10/2026; inventário com hashes em imagens.json. Os prompts e o processamento estão em ../IMAGENS.md.</p>
+<p>Origem conhecida nesta conversa/projeto: geração na ferramenta de imagens da OpenAI para o CoffeeDev, por descrições textuais, sem incluir fotografias de referência na chamada de geração. A referência visual inicial enviada pelo usuário não estava disponível para leitura, e não foi utilizada como imagem de entrada das dez gerações. Não houve download de fotos de banco ou de resultados da web para esses produtos.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Produto</th><th scope="col">Inspeção visual</th><th scope="col">Uso na interface</th></tr></thead><tbody>
+<tr><td>Cappuccino</td><td>Xícara com arte de leite em coração; sem marca visível</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Espresso</td><td>Café escuro em xícara branca, crema natural</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Latte</td><td>Arte de leite em folhas/roseta</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Cold brew</td><td>Café com gelo em copo, sem marca</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Mocha</td><td>Café com creme e chocolate</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Cookie</td><td>Biscoito com chocolate em prato</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Croissant</td><td>Massa folhada em prato</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Pão na chapa</td><td>Pão aberto e tostado</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Pão de queijo</td><td>Porção de pães, um aberto</td><td>Nome traduzido, imagem incorporada</td></tr>
+<tr><td>Brownie</td><td>Doce de chocolate em prato</td><td>Nome traduzido, imagem incorporada</td></tr>
+</tbody></table></div>
+<p>Em todas: fundo de madeira, ausência de pessoas, logotipos, marcas-d’água ou textos visíveis. Este resultado é uma inspeção visual limitada, não prova de inexistência de semelhança com outras obras. Não foi realizada busca reversa exaustiva, teste de originalidade, análise pericial ou pesquisa de marcas/desenhos industriais.</p>
+<p>Os termos da OpenAI consultados atribuem ao usuário os direitos que o provedor tenha sobre a saída na medida permitida pela lei e alertam que saídas podem não ser únicas. Isso não prova proteção autoral exclusiva no Brasil nem elimina eventual direito de terceiro. O projeto identifica Carlos Eduardo como seu autor/responsável, sem dizer que fotografou os alimentos. Não se concede domínio público ou exclusividade das imagens por inferência.</p>
+<p>O uso atual é ilustrativo em um portfólio de cafeteria fictícia. As imagens não devem representar produto real, ingrediente garantido ou condição alimentar. Há aviso na interface. Antes de comercialização ou exigência de exclusividade, obter avaliação específica e substituir por fotos próprias/documentadas quando necessário. Pesquisa INPI da marca CoffeeDev não foi feita.</p>
+<p>Ícone/logomarca: formas vetoriais desenvolvidas no projeto, sem alegação de registro; ícones de controles são Material Icons, sujeitos à licença própria. Fontes Sora/Inter possuem avisos OFL incluídos no código e no APK. Consulte THIRD_PARTY_NOTICES.md.</p></section><section id="dependencias" aria-label="Dependências"><h2>Dependências e alertas</h2>
+<p>Data: 21/10/2026. Npm consultado no registro oficial; resultados dependem da base de alertas disponível nesta data. Resultado sem alertas não significa ausência de vulnerabilidade.</p>
+<h3>Backend e ferramentas opcionais</h3>
+<ul>
+<li>Atualizados firebase-admin 13.4.0 → 14.5.0, firebase 11.8.1 → 13.1.0, @firebase/rules-unit-testing 4.0.1 → 6.0.0 e firebase-tools 14.4.0 → 15.34.0, com lockfile preservado.</li>
+<li>Override explícito de @grpc/grpc-js 1.14.6 substitui versões transitivas vulneráveis; a suíte de regras e domínio foi repetida após essa mudança. Reavaliar/remover o override quando as dependências principais incorporarem a versão corrigida.</li>
+<li>Ambiente recomendado: Node.js 22 LTS; JDK 21 para os emuladores Firebase atuais. Build Android conserva alvo Java 17 e pode ser executado com JDK compatível.</li>
+<li>Auditoria inicial: 28 alertas (13 moderados, 14 altos, 1 crítico).</li>
+<li>Auditoria final: <strong>7 alertas, 4 moderados e 3 altos; nenhum crítico</strong>. São da árvore de desenvolvimento/testes do firebase-tools; <strong>npm audit --omit=dev não apontou alertas</strong> na árvore de produção do backend.</li>
+<li>Não foi aplicado npm audit fix --force: as sugestões incluíam downgrade com mudança de versão principal e não garantem correção adequada das funções usadas. Nenhuma implementação local improvisada de biblioteca foi adotada.</li>
+<li>Essas dependências Node não são empacotadas no APK Android local. Isso não elimina risco para a máquina de desenvolvimento: usar ambiente isolado e dados fictícios, manter controles de acesso e não expor ferramentas como serviço público.</li>
+</ul>
+<div class="table-scroll"><table><thead><tr><th scope="col">Pacote reportado</th><th scope="col">Severidade</th><th scope="col">Origem/aviso</th></tr></thead><tbody>
+<tr><td>@google-cloud/pubsub</td><td>moderate</td><td>@opentelemetry/core</td></tr>
+<tr><td>@opentelemetry/core</td><td>moderate</td><td><a href="https://github.com/advisories/GHSA-8988-4f7v-96qf">OpenTelemetry Core: Unbounded memory allocation in W3C Baggage propagation</a></td></tr>
+<tr><td>braces</td><td>high</td><td><a href="https://github.com/advisories/GHSA-vfj7-8cjw-p6xm">braces vulnerable to stack-exhaustion denial of service through deeply nested patterns</a></td></tr>
+<tr><td>chokidar</td><td>high</td><td>braces</td></tr>
+<tr><td>firebase-tools</td><td>high</td><td>@google-cloud/pubsub; chokidar; gaxios</td></tr>
+<tr><td>gaxios</td><td>moderate</td><td>uuid</td></tr>
+<tr><td>uuid</td><td>moderate</td><td><a href="https://github.com/advisories/GHSA-w5hq-g745-h8pq">uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided</a></td></tr>
+</tbody></table></div>
+<p>Os relatórios JSON completos e o SBOM CycloneDX acompanham este diretório. Alguns pacotes são marcados por propagação do mesmo alerta transitivo; o total não é contagem de explorações comprovadas. Nenhuma análise de explorabilidade completa foi realizada. A árvore Node de teste com alertas é risco residual explícito, não aprovada para dados reais nesta revisão.</p>
+<h3>Android</h3>
+<p>O inventário android-dependencies.json lista os artefatos resolvidos para demoDebug, versões e hashes. Os avisos Apache 2.0 e OFL estão incorporados no APK, além de THIRD_PARTY_NOTICES.md. Não foi realizada análise SCA/CVE exaustiva de todos os binários Android, nem revisão de código de todas as dependências.</p>
+<p>O aplicativo local usa AndroidX/Compose/Kotlin; não inclui SDK Firebase Auth/Firestore. A variante cloud deve ter seu próprio inventário e nova análise antes de publicação operacional. A certificação de um provedor não certifica este projeto.</p></section><section id="fontes" aria-label="Fontes oficiais"><h2>Fontes oficiais consultadas</h2>
+<p>Consulta: 21/10/2026. Os textos oficiais e suas alterações prevalecem. A interpretação deste projeto é preliminar e depende do contexto efetivo; não se afirma validação jurídica individual.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Fonte</th><th scope="col">Aplicação nesta revisão</th></tr></thead><tbody>
+<tr><td><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm">LGPD, texto compilado</a></td><td>Transparência, minimização, bases legais, direitos e segurança; não presumir isenção de pessoa física/portfólio</td></tr>
+<tr><td><a href="https://www.planalto.gov.br/ccivil_03/leis/l9610.htm">Lei de Direitos Autorais</a></td><td>Separar autoria humana do projeto e incerteza sobre proteção de saídas de IA</td></tr>
+<tr><td><a href="https://www.planalto.gov.br/ccivil_03/leis/l9609.htm">Lei do Software</a></td><td>Direitos do código sem apropriar bibliotecas de terceiros</td></tr>
+<tr><td><a href="https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia-orientativo-cookies-e-protecao-de-dados-pessoais.pdf/@@display-file/file">Guia ANPD sobre cookies</a></td><td>Aviso coerente com tecnologias efetivas, incluindo rastreamento móvel</td></tr>
+<tr><td><a href="https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia-orientativo-sobre-seguranca-da-informacao-para-agentes-de-tratamento-de-pequeno-porte">Guia ANPD de segurança para pequeno porte</a></td><td>Medidas proporcionais, sem presumir enquadramento ou dispensa</td></tr>
+<tr><td><a href="https://www.gov.br/anpd/pt-br/assuntos/assuntos-internacionais/transferencia-internacional-de-dados">ANPD: transferência internacional</a></td><td>Rever mecanismo, serviços e contratos antes de cloud</td></tr>
+<tr><td><a href="https://www.gov.br/anpd/pt-br/acesso-a-informacao/institucional/atos-normativos/regulamentacoes_anpd/resolucao-cd-anpd-no-19-de-23-de-agosto-de-2024">ANPD Resolução 19/2024</a></td><td>Transferências e cláusulas; verificar texto/retificações vigentes</td></tr>
+<tr><td><a href="https://www.gov.br/anpd/pt-br/assuntos/comunicacao-de-incidentes-de-seguranca-cis">ANPD: comunicação de incidentes</a></td><td>Procedimento operacional de avaliação e comunicação quando cabível</td></tr>
+<tr><td><a href="https://www.lgpd.ms.gov.br/wp-content/uploads/2024/05/REGULAMENTO-DE-COMUNICACAO-DE-INCIDENTE-DE-SEGURANCA-ABRIL-2024-ANPD-.pdf">Resolução 15/2024, reprodução oficial estadual</a></td><td>Prazo geral e condições da comunicação, sem presumir exceções</td></tr>
+<tr><td><a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html">WCAG 2.2 — contraste mínimo</a></td><td>4,5:1 para texto normal; 3:1 quando aplicável</td></tr>
+<tr><td><a href="https://developer.android.com/develop/ui/compose/accessibility/api-defaults">Android: padrões de acessibilidade Compose</a></td><td>Alvos de toque e semântica nativa</td></tr>
+<tr><td><a href="https://developer.android.com/develop/ui/compose/accessibility/semantics">Android: semântica Compose</a></td><td>Descrições, títulos e papel dos controles</td></tr>
+<tr><td><a href="https://developer.android.com/identity/data/autobackup">Android: Auto Backup</a></td><td>Exclusões explícitas para backup e transferência entre aparelhos</td></tr>
+<tr><td><a href="https://openai.com/policies/row-terms-of-use/">OpenAI Terms of Use</a></td><td>Direitos contratuais sobre saída e ausência de garantia de unicidade, na extensão legal</td></tr>
+<tr><td><a href="https://firebase.google.com/support/privacy">Firebase Privacy and Security</a></td><td>Responsabilidades do cliente, serviços e dados processados</td></tr>
+<tr><td><a href="https://firebase.google.com/terms/data-processing-terms">Firebase Data Processing Terms</a></td><td>Avaliação contratual exigida antes de operação online</td></tr>
+<tr><td><a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository">GitHub: licenciar repositório</a></td><td>Repositório público não concede licença aberta geral; termos da plataforma permitem visualização/fork</td></tr>
+<tr><td><a href="https://www.apache.org/licenses/LICENSE-2.0.txt">Apache 2.0</a></td><td>Texto integral preservado no projeto/APK</td></tr>
+</tbody></table></div>
+<p>As páginas são referências, não certificações do CoffeeDev. Nenhuma pesquisa de disponibilidade da marca no INPI ou parecer jurídico profissional foi realizada.</p></section></main></html>
