@@ -1,4 +1,8 @@
 <p align="center">
+  <strong>Português</strong> · <a href="README.es.md" lang="es">Español</a>
+</p>
+
+<p align="center">
   <img src="docs/media/coffeedev-cover.svg" alt="CoffeeDev — café, código e boas ideias. Projeto Android de Carlos Eduardo." width="100%" />
 </p>
 
